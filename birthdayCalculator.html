@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<body class ="body">
+<header>
+
+</header>
+<ul class="websites">
+  <li><a class="active" href="https://www.youtube.com/c/ZachGollwitzer/videos"target="_blank">YouTube</a></li>
+  <li class="twitter"><a href="https://twitter.com/"target="_blank">Twitter</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+
+<h2 class=>BIRTHDAY CALCULATOR</h2>
+
+<p>Please enter your name</p>
+<input id = "uName" placeholder="Naruto Uzumaki">
+
+<p>Please enter your birthday</p>
+<input id = "bday" placeholder="mm/dd/yyyy"> 
+</br>
+</br>
+<button class="button" type ="button" onclick='bdaycalculator()'>Push Me</button>
+
+<p id='name'></p>
+   <p id="birthday"></p>
+     <p id="tDate"></p>
+     <p id="result"></p>
+     
+   <p id="newButton">
+   <button type ="button" id='buttonID' class='memeAppear' onclick='displayMe()'>Now Click Me</button>
+</p>
+</br>
+</br>
+<p id="meme">
+<img id="myImage" class='memeAppear'src="https://th.bing.com/th/id/OIP.blJV3Yv7HTwKn0xf298p1gHaHa?w=176&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7">
+</p>
+<p id="nextBday"></p>
+
+<script>
+const myButton = document.getElementById("newButton");
+myButton.style.display ="none"; //this is hiding the button
+
+const theMeme = document.getElementById("meme");
+theMeme.style.display ="none"; //this is hiding the meme
+
+function bdaycalculator() {
+
+    let Name = document.getElementById("uName").value;
+     let birthday = document.getElementById("bday").value;
+      //converting birthday value into a date data type
+       let bdate = new Date(birthday + "Z");
+    let currentDate = new Date();
+
+       const diffTime= Math.abs(currentDate-bdate);
+     const diffDays = (Math.ceil(diffTime / (1000 * 60 * 60 * 24)))-1;
+
+document.getElementById("name").innerHTML= "Hello " + Name;
+document.getElementById("birthday").innerHTML= "Your birthday is on " + birthday;
+document.getElementById("tDate").innerHTML= "Todays date is " + currentDate;
+document.getElementById("result").innerHTML= "Days on this planet is " + diffDays; 
+
+const myButton = document.getElementById("newButton");
+myButton.style.display ="inline"; // reveals the hidden button 
+
+}
+
+function displayMe() {
+
+let birthday = document.getElementById("bday").value;
+let bdate = new Date(birthday + "Z");
+let bMonth = bdate.getMonth()+1
+let dayOfMonth = bdate.getDate()+1
+let today = new Date();
+let bday = new Date(today.getFullYear(),bMonth,dayOfMonth);
+if( today.getTime() > bday.getTime()) {
+    bday.setFullYear(bday.getFullYear()+1);
+
+} 
+
+let diff = bday.getTime()-today.getTime();
+let days = Math.floor(diff/(1000*60*60*24));
+
+ 
+const theMeme = document.getElementById("meme");
+theMeme.style.display ="inline"; // reveals the hidden meme
+
+document.getElementById("nextBday").innerHTML= days 
+
+}
+</script>
+
+<style>
+body {
+  margin: 50;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  background:pink;
+  }
+  
+  ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: gray;
+  text-align:left
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color:yellow;
+}
+
+.active {
+  background-color:red;
+  
+}
+.twitter {
+background-color:teal;
+
+}
+
+.button:hover {
+  background-color: black; 
+  color: black; 
+  border: 2px solid #f44336;
+    background-color: turquoise;
+  border: red;
+  color: black;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 2s;
+  cursor: pointer;
+  }
+  
+  .button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #f44336;
+    background-color: orange;
+  border:blue;
+  color: teal;
+  padding: 4px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px 5px;
+  transition-duration:2s;
+  cursor: pointer;
+  
+  }
+
+
+</style>
+
+
+</body>
+</html>
